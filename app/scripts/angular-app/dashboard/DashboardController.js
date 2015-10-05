@@ -1,3 +1,5 @@
+var _ = require('lodash');
+
 var DashboardController = 
  function ($scope,$interval) {
         $scope.myItems = [

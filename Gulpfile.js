@@ -1,10 +1,12 @@
 'use strict';
 
 var gulp = require('gulp');
+var del = require('del');
 var browserify = require('browserify');
 var ngAnnotate = require('browserify-ngannotate');
 var watchify = require('watchify');
 var rimraf = require('gulp-rimraf');
+var gutil = require('gulp-util');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var uglify = require('gulp-uglify');
@@ -35,25 +37,23 @@ server.all('/*', function(req, res) {
 gulp.task('dev', ['clean', 'views', 'styles', 'browserify']);
 
 // Clean task
-gulp.task('clean', function() {
-	gulp.src('./dist/views', { read: false }) // much faster
-  .pipe(rimraf({force: true}));
+gulp.task('clean', function (cb) {
+  return del(['dist'], cb);
 });
 
 // Styles task
-gulp.task('styles', function() {
+gulp.task('styles', ['clean'], function() {
   // gulp.src('app/styles/*.scss')
   // // The onerror handler prevents Gulp from crashing when you make a mistake in your SASS
   // .pipe(sass({onError: function(e) { console.log(e); } }))
   // // Optionally add autoprefixer
-  // .pipe(autoprefixer('last 2 versions', '> 1%', 'ie 8'))
-  
-  
-gulp.src('app/styles/*.css')
-  .pipe(sourcemaps.init())
-  .pipe(minifyCss())
-  .pipe(sourcemaps.write()) 
-  .pipe(gulp.dest('dist/css/'));
+  // .pipe(autoprefixer('last 2 versions', '> 1%', 'ie 8'))    
+  return gulp.src('app/styles/*.css')    
+    .pipe(sourcemaps.init())  
+    .pipe(minifyCss())
+    .on('error', gutil.log)
+    .pipe(sourcemaps.write()) 
+    .pipe(gulp.dest('dist/css/'));
 });
 
 gulp.task('browserify', ['clean'], function() {          
@@ -80,18 +80,22 @@ function browserifyBundle(b) {
 }
 
 // Views task
-gulp.task('views', function() {
+gulp.task('index', ['clean'], function() {
   // Get our index.html
-  gulp.src('app/index.html')
+  return gulp.src('app/index.html')
   // And put it in the dist folder
   .pipe(gulp.dest('dist/'));
+});
+
+// Views task
+gulp.task('views', ['index'], function() {
   // Any other view files from app/views
-  gulp.src('app/scripts/angular-app/**/*.html')
+  return gulp.src('app/scripts/angular-app/**/*.html')
   // Will be put in the dist/views folder
   .pipe(gulp.dest('dist/views/'));
 });
 
-gulp.task('watch', function() {
+gulp.task('watch',['dev'], function() {
   // Start webserver
   server.listen(serverport);
   // Start live reload

@@ -2,11 +2,10 @@
 
 var angular = require('angular');
 
-
-
 require('../trnggrid/trNgGrid');
 require('../angular-ui/angular-ui-router');
 require('../angular-charts/angular-chart');
+
 var app = angular.module('AngularApp',  ['trNgGrid', 'ui.router','chart.js'])
     .config(function($stateProvider, $urlRouterProvider,$locationProvider) {
         $locationProvider.html5Mode({
