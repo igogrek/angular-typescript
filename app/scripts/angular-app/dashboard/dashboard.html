@@ -1,0 +1,91 @@
+<h1 class="page-header">Dashboard</h1>
+<div class="row placeholders">
+	<div class="col-sm-6 placeholder">
+		<h4>First chart</h4>
+		<canvas id="base" class="chart-base" chart-options="options" chart-type="firstChartType" chart-data="data" chart-labels="labels" chart-legend="true"></canvas> 
+		<div class="radio">
+			<label>
+				<input type="radio" ng-model="firstChartType" value="PolarArea">
+				Polar Area
+			</label>
+		</div>
+		<div class="radio">
+			<label>
+				<input type="radio" ng-model="firstChartType" value="Doughnut">
+				Doughnut
+			</label>
+		</div>
+		<div class="radio">
+			<label>
+				<input type="radio" ng-model="firstChartType" value="Pie">
+				Pie
+			</label>
+		</div>
+	</div>
+	<div class="col-sm-6 placeholder">
+		<h4>Second chart</h4>
+		<canvas id="base" class="chart-base" chart-options="options" chart-type="secondChartType" chart-series="secondSeries" chart-data="secondData" chart-labels="secondLabels" chart-legend="true"></canvas> 
+		<div class="radio">
+			<label>
+				<input type="radio" ng-model="secondChartType" value="Line">
+				Line
+			</label>
+		</div>
+		<div class="radio">
+			<label>
+				<input type="radio" ng-model="secondChartType" value="Bar">
+				Bar
+			</label>
+		</div>
+		<div class="radio">
+			<label>
+				<input type="radio" ng-model="secondChartType" value="Radar">
+				Radar
+			</label>
+		</div>
+	</div>
+</div>
+<h2 class="sub-header">Section title</h2>
+<div class="table-responsive">
+	<table tr-ng-grid items='myItems' selected-items="mySelectedItems" page-items="10">            
+		<thead>
+			<tr>
+			<th field-name="guid"></th>
+			<th field-name="fullName" display-name="Full Name" display-format="fullName:gridItem" cell-width="150px"></th>
+			<th field-name="isActive" display-name="Active" cell-width="50px" display-align="center"></th>
+			<th field-name="balance" cell-width="100px"></th>
+			<th field-name="age" cell-width="50px"></th>
+			<th field-name="eyeColor" display-name="Eyes" cell-width="50px" enable-filtering="false""></th>
+			<th field-name="company" cell-width="150px"></th>
+			<th field-name="email"></th>
+			<th field-name="registered"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td field-name="isActive">
+				<input type="checkbox" ng-model="gridItem.isActive">                         
+				</td>
+				<td field-name="eyeColor">
+				<span ng-style="{'background-color':gridItem.eyeColor,'color':gridItem.eyeColor}" class="eye-color">TEST</div>                         
+				</td>
+				<td>
+					<button class="btn btn-default table-button" ng-click="myItems.splice(myItems.indexOf(gridItem),1)">
+						Fire {{gridDisplayItem.fullName}}
+					</button>
+				</td>
+			</tr>
+		</tbody>
+		<tfoot>
+		<tr>
+			<td>
+				<span tr-ng-grid-global-filter=""></span>
+				<span class="form-group pull-left">
+					<button class="btn btn-primary" ng-click="removeSelectedElements()" ng-disabled='!mySelectedItems.length'>Fire!</button>
+				</span>
+				<span tr-ng-grid-pager=""></span>
+			</td>
+		</tr>
+		</tfoot>
+	</table>
+ </div>
