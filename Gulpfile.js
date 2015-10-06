@@ -1,19 +1,19 @@
 'use strict';
 
-var gulp = require('gulp');
-var del = require('del');
-var browserify = require('browserify');
-var ngAnnotate = require('browserify-ngannotate');
-var watchify = require('watchify');
-var rimraf = require('gulp-rimraf');
-var gutil = require('gulp-util');
-var source = require('vinyl-source-stream');
-var buffer = require('vinyl-buffer');
-var uglify = require('gulp-uglify');
-var sourcemaps = require('gulp-sourcemaps');
-    //sass = require('gulp-sass'),
-var minifyCss = require('gulp-minify-css');
+var browserify   = require('browserify');
+var ngAnnotate   = require('browserify-ngannotate');
+var del          = require('del');
+var gulp         = require('gulp');
 var autoprefixer = require('gulp-autoprefixer');
+var concat       = require('gulp-concat');
+var minifyCss    = require('gulp-minify-css');
+var sourcemaps   = require('gulp-sourcemaps');
+var plumber      = require('gulp-plumber');
+var uglify       = require('gulp-uglify');
+var buffer       = require('vinyl-buffer');
+var source       = require('vinyl-source-stream');
+var watchify     = require('watchify');
+//var sass = require('gulp-sass');
 
 // Modules for webserver and livereload
 var express = require('express'),
@@ -32,31 +32,29 @@ server.use(express.static('./dist'));
 server.all('/*', function(req, res) {
   res.sendFile('index.html', { root: 'dist' });
 });
-
 // Dev task
 gulp.task('dev', ['clean', 'views', 'styles', 'browserify']);
-
+// Default task
+gulp.task('default', ['dev', 'watch']);
 // Clean task
 gulp.task('clean', function (cb) {
-  return del(['dist'], cb);
+  return del(['dist/css','dist/views'], cb);
 });
-
 // Styles task
-gulp.task('styles', ['clean'], function() {
-  // gulp.src('app/styles/*.scss')
-  // // The onerror handler prevents Gulp from crashing when you make a mistake in your SASS
-  // .pipe(sass({onError: function(e) { console.log(e); } }))
-  // // Optionally add autoprefixer
-  // .pipe(autoprefixer('last 2 versions', '> 1%', 'ie 8'))    
-  return gulp.src('app/styles/*.css')    
+gulp.task('styles', function() {
+  // gulp.src('app/styles/*.scss')  
+  // .pipe(sass()) 
+  return gulp.src('app/styles/*.css')     
+    .pipe(plumber()) 
     .pipe(sourcemaps.init())  
-    .pipe(minifyCss())
-    .on('error', gutil.log)
-    .pipe(sourcemaps.write()) 
+    .pipe(autoprefixer())
+    .pipe(minifyCss())    
+    .pipe(concat('all.css'))     
+    .pipe(sourcemaps.write())    
     .pipe(gulp.dest('dist/css/'));
 });
-
-gulp.task('browserify', ['clean'], function() {          
+// Bundle JS via browsirify
+gulp.task('browserify', function() {          
   var b = browserify({
     entries: 'app/scripts/angular-app/app.js',
     debug: true,
@@ -76,25 +74,24 @@ function browserifyBundle(b) {
     // .pipe(sourcemaps.init({loadMaps: true}))
     // .pipe(uglify())
     // .pipe(sourcemaps.write('./'))
+    //.pipe(cachebust.references())
     .pipe(gulp.dest('dist/js/'));
 }
-
-// Views task
-gulp.task('index', ['clean'], function() {
+// Copy index
+gulp.task('index', function() {
   // Get our index.html
   return gulp.src('app/index.html')
   // And put it in the dist folder
   .pipe(gulp.dest('dist/'));
 });
-
-// Views task
+// Copy views task
 gulp.task('views', ['index'], function() {
   // Any other view files from app/views
   return gulp.src('app/scripts/angular-app/**/*.html')
   // Will be put in the dist/views folder
   .pipe(gulp.dest('dist/views/'));
 });
-
+// Watch files dev task
 gulp.task('watch',['dev'], function() {
   // Start webserver
   server.listen(serverport);
@@ -107,13 +104,8 @@ gulp.task('watch',['dev'], function() {
   gulp.watch(['app/styles/**/*.css',], [
     'styles'
   ]);
-
   gulp.watch(['app/**/*.html'], [
     'views'
   ]);
-
   gulp.watch('./dist/**').on('change', refresh.changed);
-
 });
-
-gulp.task('default', ['dev', 'watch']);
