@@ -12,7 +12,7 @@ var app = angular.module('AngularApp',  ['trNgGrid', 'ui.router','chart.js'])
             enabled: true,
             requireBase: false
         });     
-        // For any unmatched url, redirect to /state1
+        // For any unmatched url, redirect to /dashboard
         $urlRouterProvider.otherwise("/dashboard");                       
         $stateProvider
             .state('dashboard', {
@@ -28,6 +28,6 @@ var app = angular.module('AngularApp',  ['trNgGrid', 'ui.router','chart.js'])
             
     });
 
-app.controller('SidebarController', ['$scope','$location', require('./index/SidebarController.js')]);
-app.controller('DashboardController', ['$scope','$interval', require('./dashboard/DashboardController.js')]);
-app.controller('ChartController', ['$scope','$interval', require('./chart/ChartController.js')]);
+app.controller('SidebarController', ['$scope','$location', require('./index/sidebarController.js')]);
+app.controller('DashboardController', ['$scope','$interval', require('./dashboard/dashboardController.js')]);
+app.controller('ChartController', ['$scope','$interval', require('./chart/chartController.js')]);

@@ -37,7 +37,7 @@ server.all('/*', function(req, res) {
 gulp.task('default', function(done) {
     runSequence('clean', ['index', 'views', 'fonts', 'styles', 'browserify'],'watch');
 });
-// Clean task
+// Clean dist folder task
 gulp.task('clean', function (cb) {
   return del(['dist/css','dist/views'], cb);
 });
@@ -56,7 +56,7 @@ gulp.task('fonts', function() {
   return gulp.src('app/fonts/*') 
   .pipe(gulp.dest('dist/fonts/'));
 });
-// Styles task
+// Prepate styles task
 gulp.task('styles', function() {
   // gulp.src('app/styles/*.scss')  
   // .pipe(sass()) 
@@ -69,7 +69,7 @@ gulp.task('styles', function() {
     .pipe(sourcemaps.write())    
     .pipe(gulp.dest('dist/css/'));
 });
-// Bundle JS via browsirify
+// Bundle JS via browserify
 gulp.task('browserify', function() {          
   var b = browserify({
     entries: 'app/scripts/angular-app/app.js',
