@@ -3017,18 +3017,18 @@ var DashboardController =
   ];
   $scope.secondChartType = 'Line';
     
-  $interval(function () {
-    $scope.getLiveChartData();
-  }, 10000);
+  // $interval(function () {
+  //   $scope.getLiveChartData();
+  // }, 10000);
 
   $scope.getLiveChartData = function getLiveChartData () {
       $scope.data.splice(0,1);    
       $scope.data.push($scope.getRandomValue(0, 500));  
   }
   
-    $interval(function () {
-      $scope.getSecondLiveChartData();
-    }, 10000);
+    // $interval(function () {
+    //   $scope.getSecondLiveChartData();
+    // }, 10000);
   
     $scope.getSecondLiveChartData = function () {
         $scope.secondData[0].splice(0,1);    

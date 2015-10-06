@@ -10,6 +10,7 @@ var minifyCss    = require('gulp-minify-css');
 var sourcemaps   = require('gulp-sourcemaps');
 var plumber      = require('gulp-plumber');
 var uglify       = require('gulp-uglify');
+var runSequence  = require('run-sequence');
 var buffer       = require('vinyl-buffer');
 var source       = require('vinyl-source-stream');
 var watchify     = require('watchify');
@@ -21,7 +22,6 @@ var express = require('express'),
     livereload = require('connect-livereload'),
     livereloadport = 35729,
     serverport = 5000;
-
 // Set up an express server (not starting it yet)
 var server = express();
 // Add live reload
@@ -32,13 +32,29 @@ server.use(express.static('./dist'));
 server.all('/*', function(req, res) {
   res.sendFile('index.html', { root: 'dist' });
 });
-// Dev task
-gulp.task('dev', ['clean', 'views', 'styles', 'browserify']);
+
 // Default task
-gulp.task('default', ['dev', 'watch']);
+gulp.task('default', function(done) {
+    runSequence('clean', ['index', 'views', 'fonts', 'styles', 'browserify'],'watch');
+});
 // Clean task
 gulp.task('clean', function (cb) {
   return del(['dist/css','dist/views'], cb);
+});
+// Copy index.html
+gulp.task('index', function() {
+  return gulp.src('app/index.html')
+  .pipe(gulp.dest('dist/'));
+});
+// Copy angular views task
+gulp.task('views', function() {
+  return gulp.src('app/scripts/angular-app/**/*.html')
+  .pipe(gulp.dest('dist/views/'));
+});
+// Copy fonts task
+gulp.task('fonts', function() {
+  return gulp.src('app/fonts/*') 
+  .pipe(gulp.dest('dist/fonts/'));
 });
 // Styles task
 gulp.task('styles', function() {
@@ -77,22 +93,8 @@ function browserifyBundle(b) {
     //.pipe(cachebust.references())
     .pipe(gulp.dest('dist/js/'));
 }
-// Copy index
-gulp.task('index', function() {
-  // Get our index.html
-  return gulp.src('app/index.html')
-  // And put it in the dist folder
-  .pipe(gulp.dest('dist/'));
-});
-// Copy views task
-gulp.task('views', ['index'], function() {
-  // Any other view files from app/views
-  return gulp.src('app/scripts/angular-app/**/*.html')
-  // Will be put in the dist/views folder
-  .pipe(gulp.dest('dist/views/'));
-});
-// Watch files dev task
-gulp.task('watch',['dev'], function() {
+// Watch files task
+gulp.task('watch', function() {
   // Start webserver
   server.listen(serverport);
   // Start live reload
