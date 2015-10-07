@@ -1,4 +1,4 @@
-module.exports = function ($scope, $interval) {
+var ChartController = function ($scope, $interval) {
   var maximum = document.getElementById('chartContainer').clientWidth / 2 || 300;
   $scope.data = [[]];
   $scope.labels = [];
@@ -31,3 +31,6 @@ module.exports = function ($scope, $interval) {
     return y < 0 ? 0 : y > 100 ? 100 : y;
   }
 };
+
+ChartController.$inject = ['$scope', '$interval'];
+module.exports = ChartController;

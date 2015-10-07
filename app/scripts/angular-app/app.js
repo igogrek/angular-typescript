@@ -7,7 +7,7 @@ require('../angular-ui/angular-ui-router');
 require('../angular-charts/angular-chart');
 
 var app = angular.module('AngularApp',  ['trNgGrid', 'ui.router','chart.js'])
-    .config(function($stateProvider, $urlRouterProvider,$locationProvider) {
+    .config(['$stateProvider','$urlRouterProvider','$locationProvider', function($stateProvider, $urlRouterProvider,$locationProvider) {
         $locationProvider.html5Mode({
             enabled: true,
             requireBase: false
@@ -26,8 +26,8 @@ var app = angular.module('AngularApp',  ['trNgGrid', 'ui.router','chart.js'])
                 controller: 'ChartController'
             })     
             
-    });
+    }]);
 
-app.controller('SidebarController', ['$scope','$location', require('./index/sidebarController.js')]);
-app.controller('DashboardController', ['$scope','$interval', require('./dashboard/dashboardController.js')]);
-app.controller('ChartController', ['$scope','$interval', require('./chart/chartController.js')]);
+app.controller('SidebarController', require('./index/SidebarController.js'));
+app.controller('DashboardController', require('./dashboard/DashboardController.js'));
+app.controller('ChartController', require('./chart/ChartController.js'));
