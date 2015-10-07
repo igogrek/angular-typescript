@@ -1,4 +1,4 @@
-var ChartController = function ($scope, $interval) {
+module.exports = /*@ngInject*/ function ($scope, $interval) {
   var maximum = document.getElementById('chartContainer').clientWidth / 2 || 300;
   $scope.data = [[]];
   $scope.labels = [];
@@ -31,6 +31,3 @@ var ChartController = function ($scope, $interval) {
     return y < 0 ? 0 : y > 100 ? 100 : y;
   }
 };
-
-ChartController.$inject = ['$scope', '$interval'];
-module.exports = ChartController;

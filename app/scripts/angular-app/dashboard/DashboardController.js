@@ -1,6 +1,6 @@
 var _ = require('lodash');
 
-var DashboardController = function ($scope,$interval) {
+module.exports = /*@ngInject*/ function ($scope, $interval) {
         $scope.myItems = [
   {
     "_id": "55fc15d7e1a7d5980ac6f6cb",
@@ -3055,10 +3055,7 @@ var DashboardController = function ($scope,$interval) {
         });
       }      
     };
-  }; 
-  
-DashboardController.$inject = ['$scope', '$interval'];
-module.exports = DashboardController;
+  };  
   
 angular
     .module('AngularApp')

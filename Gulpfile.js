@@ -1,6 +1,7 @@
 'use strict';
 
 var browserify   = require('browserify');
+var ngAnnotate   = require('browserify-ngannotate');
 var del          = require('del');
 var gulp         = require('gulp');
 var autoprefixer = require('gulp-autoprefixer');
@@ -76,7 +77,8 @@ gulp.task('styles', function() {
 gulp.task('browserify', function() {          
   var b = browserify({
     entries: 'app/scripts/angular-app/app.js',
-    debug: true
+    debug: true,
+    transform: [ngAnnotate]
   });
   b = watchify(b);
   b.on('update', function(){
