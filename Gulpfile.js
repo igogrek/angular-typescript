@@ -1,11 +1,11 @@
 'use strict';
 
 var browserify   = require('browserify');
-var ngAnnotate   = require('browserify-ngannotate');
 var del          = require('del');
 var gulp         = require('gulp');
 var autoprefixer = require('gulp-autoprefixer');
 var concat       = require('gulp-concat');
+var gulpif       = require('gulp-if');
 var minifyCss    = require('gulp-minify-css');
 var sourcemaps   = require('gulp-sourcemaps');
 var plumber      = require('gulp-plumber');
@@ -14,7 +14,10 @@ var runSequence  = require('run-sequence');
 var buffer       = require('vinyl-buffer');
 var source       = require('vinyl-source-stream');
 var watchify     = require('watchify');
+var argv         = require('yargs').argv;
 //var sass = require('gulp-sass');
+
+var production = argv.production;
 
 // Modules for webserver and livereload
 var express = require('express'),
@@ -62,19 +65,18 @@ gulp.task('styles', function() {
   // .pipe(sass()) 
   return gulp.src('app/styles/*.css')     
     .pipe(plumber()) 
-    .pipe(sourcemaps.init())  
+    .pipe(gulpif(!production, sourcemaps.init()))  
     .pipe(autoprefixer())
-    .pipe(minifyCss())    
+    .pipe(gulpif(production, minifyCss()))    
     .pipe(concat('all.css'))     
-    .pipe(sourcemaps.write())    
+    .pipe(gulpif(!production, sourcemaps.write()))    
     .pipe(gulp.dest('dist/css/'));
 });
 // Bundle JS via browserify
 gulp.task('browserify', function() {          
   var b = browserify({
     entries: 'app/scripts/angular-app/app.js',
-    debug: true,
-    transform: [ngAnnotate]
+    debug: true
   });
   b = watchify(b);
   b.on('update', function(){
@@ -86,11 +88,11 @@ gulp.task('browserify', function() {
 function browserifyBundle(b) {
   b.bundle()
     .pipe(source('bundle.js'))
-    // .pipe(buffer())
-    // .pipe(sourcemaps.init({loadMaps: true}))
-    // .pipe(uglify())
-    // .pipe(sourcemaps.write('./'))
-    //.pipe(cachebust.references())
+    .pipe(buffer())
+    .pipe(sourcemaps.init({loadMaps: true}))
+    // Breaks source maps!
+    .pipe(gulpif(production, uglify()))
+    .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('dist/js/'));
 }
 // Watch files task
