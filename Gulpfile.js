@@ -5,6 +5,7 @@ var ngAnnotate   = require('browserify-ngannotate');
 var del          = require('del');
 var gulp         = require('gulp');
 var autoprefixer = require('gulp-autoprefixer');
+var CacheBuster  = require('gulp-cachebust');
 var concat       = require('gulp-concat');
 var gulpif       = require('gulp-if');
 var minifyCss    = require('gulp-minify-css');
@@ -18,6 +19,7 @@ var watchify     = require('watchify');
 var argv         = require('yargs').argv;
 //var sass = require('gulp-sass');
 
+var cachebust = new CacheBuster();
 var production = argv.production;
 
 // Modules for webserver and livereload
@@ -37,30 +39,29 @@ server.all('/*', function(req, res) {
   res.sendFile('index.html', { root: 'dist' });
 });
 
-// Default task
+// Default task - build and watch
 gulp.task('default', function(done) {
-    runSequence('clean', ['index', 'views', 'fonts', 'styles', 'browserify'],'watch');
+    return runSequence('clean', [ 'views', 'fonts', 'styles', 'browserify'],'inject', 'watch', done);
+});
+// Build only task
+gulp.task('build', function(done) {
+    return runSequence('clean', [ 'views', 'fonts', 'styles', 'browserify'],'inject', done);
 });
 // Clean dist folder task
 gulp.task('clean', function (cb) {
-  return del(['dist/css','dist/views'], cb);
-});
-// Copy index.html
-gulp.task('index', function() {
-  return gulp.src('app/index.html')
-  .pipe(gulp.dest('dist/'));
+  return del(['dist/js','dist/css','dist/views'], cb);
 });
 // Copy angular views task
 gulp.task('views', function() {
   return gulp.src('app/scripts/angular-app/**/*.html')
-  .pipe(gulp.dest('dist/views/'));
+    .pipe(gulp.dest('dist/views/'));
 });
 // Copy fonts task
 gulp.task('fonts', function() {
   return gulp.src('app/fonts/*') 
-  .pipe(gulp.dest('dist/fonts/'));
+   .pipe(gulp.dest('dist/fonts/'));
 });
-// Prepate styles task
+// Prepare styles task
 gulp.task('styles', function() {
   // gulp.src('app/styles/*.scss')  
   // .pipe(sass()) 
@@ -70,10 +71,11 @@ gulp.task('styles', function() {
     .pipe(autoprefixer())
     .pipe(gulpif(production, minifyCss()))    
     .pipe(concat('all.css'))     
+    .pipe(gulpif(production, cachebust.resources()))
     .pipe(gulpif(!production, sourcemaps.write()))    
     .pipe(gulp.dest('dist/css/'));
 });
-// Bundle JS via browserify
+// Bundle JS via browserify task
 gulp.task('browserify', function() {          
   var b = browserify({
     entries: 'app/scripts/angular-app/app.js',
@@ -88,15 +90,22 @@ gulp.task('browserify', function() {
 });
 
 function browserifyBundle(b) {
-  b.bundle()
+  return b.bundle()
     .pipe(source('bundle.js'))
     .pipe(buffer())
-    .pipe(sourcemaps.init({loadMaps: true}))
-    // Breaks source maps!
+    .pipe(gulpif(production, cachebust.resources()))
+    .pipe(gulpif(!production, sourcemaps.init({loadMaps: true})))
+    // uglify breaks source maps anyway!
     .pipe(gulpif(production, uglify()))
-    .pipe(sourcemaps.write('./'))
+    .pipe(gulpif(!production, sourcemaps.write('./')))
     .pipe(gulp.dest('dist/js/'));
 }
+// Copy index.html with cachebust for production
+gulp.task('inject', function() {
+  return gulp.src('app/index.html')
+    .pipe(gulpif(production, cachebust.references()))
+    .pipe(gulp.dest('dist/'));
+});
 // Watch files task
 gulp.task('watch', function() {
   // Start webserver
