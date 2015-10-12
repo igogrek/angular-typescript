@@ -36,12 +36,12 @@
         </div>
       </div>
     </nav>
-    <div class="container-fluid"  ng-controller="SidebarController">
+    <div class="container-fluid"  ng-controller="SidebarController as sidebar">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li ng-class="{ active: isActive('/dashboard')}"><a ui-sref="dashboard">Dashboard</a></li>
-            <li ng-class="{ active: isActive('/chart')}"><a ui-sref="chart">Charts</a></li>
+            <li ng-class="{ active: sidebar.isActive('/dashboard')}"><a ui-sref="dashboard">Dashboard</a></li>
+            <li ng-class="{ active: sidebar.isActive('/chart')}"><a ui-sref="chart">Charts</a></li>
           </ul>
           <!--<ul class="nav nav-sidebar">
             <li><a href="">Nav item again</a></li>

@@ -1,8 +1,12 @@
-module.exports = /*@ngInject*/ function ($scope, $interval) {
+'use strict';
+
+/*@ngInject*/ function ChartController($interval) {
+  var vm = this;
+  
   var maximum = document.getElementById('chartContainer').clientWidth / 2 || 300;
-  $scope.data = [[]];
-  $scope.labels = [];
-  $scope.options = {
+  vm.data = [[]];
+  vm.labels = [];
+  vm.options = {
     animation: false,
     showScale: false,
     showTooltips: false,
@@ -10,24 +14,25 @@ module.exports = /*@ngInject*/ function ($scope, $interval) {
     datasetStrokeWidth: 0.5
   };
   // Update the dataset at 25FPS for a smoothly-animating chart
-  $interval(function () {
-    $scope.getLiveChartData();
-  }, 40);
-
-  $scope.getLiveChartData = function getLiveChartData () {
-    if ($scope.data[0].length) {
-      $scope.labels = $scope.labels.slice(1);
-      $scope.data[0] = $scope.data[0].slice(1);
+  vm.getLiveChartData = function () {
+    if (vm.data[0].length) {
+      vm.labels = vm.labels.slice(1);
+      vm.data[0] = vm.data[0].slice(1);
     }
 
-    while ($scope.data[0].length < maximum) {
-      $scope.labels.push('');
-      $scope.data[0].push($scope.getRandomValue($scope.data[0]));
+    while (vm.data[0].length < maximum) {
+      vm.labels.push('');
+      vm.data[0].push(vm.getRandomValue(vm.data[0]));
     }
   }
-  $scope.getRandomValue = function getRandomValue (data) {
+  vm.getRandomValue = function getRandomValue (data) {
     var l = data.length, previous = l ? data[l - 1] : 50;
     var y = previous + Math.random() * 10 - 5;
     return y < 0 ? 0 : y > 100 ? 100 : y;
   }
+  
+  $interval(function () {
+    vm.getLiveChartData();
+  }, 40);
 };
+module.exports = ChartController;

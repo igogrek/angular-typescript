@@ -2,44 +2,44 @@
 <div class="row placeholders">
 	<div class="col-sm-6 placeholder">
 		<h4>First chart</h4>
-		<canvas id="base" class="chart-base" chart-options="options" chart-type="firstChartType" chart-data="data" chart-labels="labels" chart-legend="true"></canvas> 
+		<canvas id="base" class="chart-base" chart-options="dashboard.options" chart-type="dashboard.firstChartType" chart-data="dashboard.data" chart-labels="dashboard.labels" chart-legend="true"></canvas> 
 		<div class="radio">
 			<label>
-				<input type="radio" ng-model="firstChartType" value="PolarArea">
+				<input type="radio" ng-model="dashboard.firstChartType" value="PolarArea">
 				Polar Area
 			</label>
 		</div>
 		<div class="radio">
 			<label>
-				<input type="radio" ng-model="firstChartType" value="Doughnut">
+				<input type="radio" ng-model="dashboard.firstChartType" value="Doughnut">
 				Doughnut
 			</label>
 		</div>
 		<div class="radio">
 			<label>
-				<input type="radio" ng-model="firstChartType" value="Pie">
+				<input type="radio" ng-model="dashboard.firstChartType" value="Pie">
 				Pie
 			</label>
 		</div>
 	</div>
 	<div class="col-sm-6 placeholder">
 		<h4>Second chart</h4>
-		<canvas id="base" class="chart-base" chart-options="options" chart-type="secondChartType" chart-series="secondSeries" chart-data="secondData" chart-labels="secondLabels" chart-legend="true"></canvas> 
+		<canvas id="base" class="chart-base" chart-options="dashboard.options" chart-type="dashboard.secondChartType" chart-series="dashboard.secondSeries" chart-data="dashboard.secondData" chart-labels="dashboard.secondLabels" chart-legend="true"></canvas> 
 		<div class="radio">
 			<label>
-				<input type="radio" ng-model="secondChartType" value="Line">
+				<input type="radio" ng-model="dashboard.secondChartType" value="Line">
 				Line
 			</label>
 		</div>
 		<div class="radio">
 			<label>
-				<input type="radio" ng-model="secondChartType" value="Bar">
+				<input type="radio" ng-model="dashboard.secondChartType" value="Bar">
 				Bar
 			</label>
 		</div>
 		<div class="radio">
 			<label>
-				<input type="radio" ng-model="secondChartType" value="Radar">
+				<input type="radio" ng-model="dashboard.secondChartType" value="Radar">
 				Radar
 			</label>
 		</div>
@@ -47,7 +47,7 @@
 </div>
 <h2 class="sub-header">Section title</h2>
 <div class="table-responsive">
-	<table tr-ng-grid items='myItems' selected-items="mySelectedItems" page-items="10">            
+	<table tr-ng-grid items='dashboard.myItems' selected-items="dashboard.mySelectedItems" page-items="10">            
 		<thead>
 			<tr>
 			<th field-name="guid"></th>
@@ -70,7 +70,7 @@
 				<span ng-style="{'background-color':gridItem.eyeColor,'color':gridItem.eyeColor}" class="eye-color">TEST</div>                         
 				</td>
 				<td>
-					<button class="btn btn-default table-button" ng-click="myItems.splice(myItems.indexOf(gridItem),1)">
+					<button class="btn btn-default table-button" ng-click="dashboard.myItems.splice(myItems.indexOf(gridItem),1)">
 						Fire {{gridDisplayItem.fullName}}
 					</button>
 				</td>
@@ -81,7 +81,7 @@
 			<td>
 				<span tr-ng-grid-global-filter=""></span>
 				<span class="form-group pull-left">
-					<button class="btn btn-primary" ng-click="removeSelectedElements()" ng-disabled='!mySelectedItems.length'>Fire!</button>
+					<button class="btn btn-primary" ng-click="dashboard.removeSelectedElements()" ng-disabled='!dashboard.mySelectedItems.length'>Fire!</button>
 				</span>
 				<span tr-ng-grid-pager=""></span>
 			</td>

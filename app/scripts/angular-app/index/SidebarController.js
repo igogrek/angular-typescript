@@ -1,5 +1,9 @@
-module.exports = /*@ngInject*/ function ($scope, $location) {
-    $scope.isActive = function (viewLocation) {
+'use strict';
+
+/*@ngInject*/ function SidebarController($location) {
+    this.isActive = function (viewLocation) {
         return viewLocation === $location.path();
     };
 };
+
+module.exports = SidebarController;
