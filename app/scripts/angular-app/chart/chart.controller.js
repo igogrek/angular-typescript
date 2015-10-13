@@ -7,7 +7,8 @@ function ChartController($interval) {
   vm.data = [[]];
   vm.labels = [];
   vm.options = { 
-    animationSteps: 30,
+    animation: false,
+    animationSteps: 10,
     animationEasing: "linear",
     showTooltips: false,
     pointDot: false,
@@ -17,6 +18,7 @@ function ChartController($interval) {
     scaleStepWidth: 10,
     scaleSteps: 10
   };
+  vm.played = true;
   vm.getLiveChartData = getLiveChartData;
   vm.getRandomValue = getRandomValue;
 
@@ -25,8 +27,9 @@ function ChartController($interval) {
   function activate() {    
     // Update the dataset for a smoothly-animating chart
     $interval(function () {
-      vm.getLiveChartData();
-    }, 100);
+      if (vm.played)
+        vm.getLiveChartData();
+    }, 40);
   }
 
   function getLiveChartData() {

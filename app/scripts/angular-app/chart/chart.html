@@ -1,3 +1,10 @@
+<button type="button" class="btn btn-default" ng-if="chart.played" ng-click="chart.played = !chart.played">
+	<span class="glyphicon glyphicon-pause"></span> Pause
+</button>
+<button type="button" class="btn btn-default" ng-if="!chart.played" ng-click="chart.played = !chart.played">
+	<span class="glyphicon glyphicon-play"></span> Play
+</button>
+
 <div class="container-fluid" id="chartContainer">
 	<canvas id="hero-bar" class="chart chart-line chart-xl" chart-data="chart.data" chart-options="chart.options" chart-labels="chart.labels"></canvas>
 </div>
