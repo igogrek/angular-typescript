@@ -7,8 +7,8 @@ require('../angular-ui/angular-ui-router');
 require('../angular-charts/angular-chart');
 
 angular.module('AngularApp',  ['trNgGrid', 'ui.router','chart.js'])
-	.controller('SidebarController', require('./index/SidebarController.js'))
-	.controller('DashboardController', require('./dashboard/DashboardController.js'))
-	.factory('PeopleService', require('./dashboard/PeopleService.js'))
-	.controller('ChartController', require('./chart/ChartController.js'))
+	.controller('SidebarController', require('./index/sidebar.controller.js'))
+	.controller('DashboardController', require('./dashboard/dashboard.controller.js'))
+	.factory('peopleService', require('./dashboard/people.service.js'))
+	.controller('ChartController', require('./chart/chart.controller.js'))
 	.config(require('./config.js'));
