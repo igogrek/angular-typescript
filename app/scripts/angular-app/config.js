@@ -1,6 +1,7 @@
 'use strict';
 
-module.exports = /*@ngInject*/ function($stateProvider, $urlRouterProvider, $locationProvider) {
+/*@ngInject*/ 
+function Config($stateProvider, $urlRouterProvider, $locationProvider) {
     $locationProvider.html5Mode({
         enabled: true,
         requireBase: false
@@ -21,3 +22,4 @@ module.exports = /*@ngInject*/ function($stateProvider, $urlRouterProvider, $loc
             controllerAs: 'chart'
         })                 
 };
+module.exports = Config;
