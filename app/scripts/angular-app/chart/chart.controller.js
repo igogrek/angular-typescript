@@ -1,38 +1,45 @@
 'use strict';
 
-/*@ngInject*/ 
+/*@ngInject*/
 function ChartController($interval) {
   var vm = this;
-  
+
   vm.data = [[]];
   vm.labels = [];
-  vm.options = {
-    animation: false,
-    showScale: false,
+  vm.options = { 
+    animationSteps: 30,
+    animationEasing: "linear",
     showTooltips: false,
     pointDot: false,
-    datasetStrokeWidth: 0.5
+    datasetStrokeWidth: 0.5,
+    scaleOverride: true,
+    scaleStartValue: 0, 
+    scaleStepWidth: 10,
+    scaleSteps: 10
   };
-  vm.getLiveChartData = getLiveChartData; 
+  vm.getLiveChartData = getLiveChartData;
   vm.getRandomValue = getRandomValue;
-  
-   // Update the dataset for a smoothly-animating chart
-  $interval(function () {
-    vm.getLiveChartData();
-  }, 40);
-  
-  var maximum = document.getElementById('chartContainer').clientWidth / 2 || 300;
-  function getLiveChartData () {
+
+  activate();
+
+  function activate() {    
+    // Update the dataset for a smoothly-animating chart
+    $interval(function () {
+      vm.getLiveChartData();
+    }, 100);
+  }
+
+  function getLiveChartData() {
     if (vm.data[0].length) {
       vm.labels = vm.labels.slice(1);
       vm.data[0] = vm.data[0].slice(1);
     }
-    while (vm.data[0].length < maximum) {
+    while (vm.data[0].length < 30) {
       vm.labels.push('');
       vm.data[0].push(vm.getRandomValue(vm.data[0]));
     }
   }
-    
+
   function getRandomValue(data) {
     var l = data.length, previous = l ? data[l - 1] : 50;
     var y = previous + Math.random() * 10 - 5;
