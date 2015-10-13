@@ -2,13 +2,10 @@
 
 var angular = require('angular');
 
-require('../trnggrid/trNgGrid');
 require('../angular-ui/angular-ui-router');
-require('../angular-charts/angular-chart');
+require('./dashboard/dashboard.module');
+require('./chart/chart.module');
 
-angular.module('AngularApp',  ['trNgGrid', 'ui.router','chart.js'])
-	.controller('SidebarController', require('./index/sidebar.controller.js'))
-	.controller('DashboardController', require('./dashboard/dashboard.controller.js'))
-	.factory('peopleService', require('./dashboard/people.service.js'))
-	.controller('ChartController', require('./chart/chart.controller.js'))
-	.config(require('./config.js'));
+angular.module('AngularApp', ['ui.router', 'dashboard', 'chart'])
+	.controller('SidebarController', require('./index/sidebar.controller'))
+	.config(require('./config'));		

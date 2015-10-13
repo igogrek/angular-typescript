@@ -68,11 +68,3 @@ function DashboardController($interval, peopleService) {
 };
 
 module.exports = DashboardController;
-
-angular
-  .module('AngularApp')
-  .filter("fullName", function () {
-    return function (fieldValueUnused, item) {
-      return item.name.first + " " + item.name.last;
-    };
-  })
