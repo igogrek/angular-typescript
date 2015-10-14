@@ -80,9 +80,12 @@ gulp.task('browserify', function() {
   var b = browserify({
     entries: 'app/scripts/angular-app/app.js',
     debug: true,
-    transform: [ngAnnotate]
+    detectGlobals: false,
+    noParse: ['angular']
   });
   b = watchify(b);
+  if (production)
+    b.transform(ngAnnotate);
   b.on('update', function(){
     browserifyBundle(b);
   });
