@@ -1,6 +1,6 @@
 'use strict';
 
-var angular = require('angular');
+import angular = require('angular');
 
 require('../angular-ui/angular-ui-router');
 require('./dashboard/dashboard.module');

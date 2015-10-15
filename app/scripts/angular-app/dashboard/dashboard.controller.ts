@@ -1,0 +1,65 @@
+'use strict';
+
+import _ = require('lodash');
+
+class DashboardController {
+
+  myItems = [];
+  mySelectedItems = [];
+  labels = ["Vasya", "Igor", "Petya", "Sasha", "Epifan"];
+  data = [300, 500, 100, 40, 120];
+  firstChartType = 'PolarArea';
+  secondLabels = ["January", "February", "March", "April", "May", "June", "July"];
+  secondSeries = ['Vasya', 'Petya'];
+  secondData = [
+    [65, 59, 80, 81, 56, 55, 40],
+    [28, 48, 40, 19, 86, 27, 90]
+  ];
+  secondChartType = 'Line';
+  options = {
+    animationEasing: "easeOutCubic",
+    pointDot: false,
+    scaleShowGridLines: false
+  };
+
+  static $inject = ['$interval', 'peopleService'];
+
+  constructor($interval: ng.IIntervalService, peopleService) {
+    $interval(() => {
+      this.getLiveChartData();
+    }, 5000);
+
+    $interval(() => {
+      this.getSecondLiveChartData();
+    }, 5000);
+
+    this.myItems = peopleService.getUsers();
+  }
+
+  getLiveChartData() {
+    this.data.splice(0, 1);
+    this.data.push(this.getRandomValue(0, 500));
+  }
+
+  getSecondLiveChartData() {
+    this.secondData[0].splice(0, 1);
+    this.secondData[0].push(this.getRandomValue(0, 500));
+    this.secondData[1].splice(0, 1);
+    this.secondData[1].push(this.getRandomValue(0, 500));
+  }
+
+  getRandomValue(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  removeSelectedElements() {
+    for (var i = 0; i < this.mySelectedItems.length; i++) {
+      var item = this.mySelectedItems[i];
+      _.remove(this.myItems, {
+        guid: item.guid
+      });
+    }
+  };
+};
+
+export = DashboardController;

@@ -1,5 +1,7 @@
 'use strict';
 
+export = ChartConfig;
+
 /*@ngInject*/ 
 function ChartConfig($stateProvider) {
     // For any unmatched url, redirect to /dashboard               
@@ -11,4 +13,3 @@ function ChartConfig($stateProvider) {
             controllerAs: 'chart'
         })                  
 };
-module.exports = ChartConfig;

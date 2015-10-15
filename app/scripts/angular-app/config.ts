@@ -1,5 +1,7 @@
 'use strict';
 
+export = Config;
+
 /*@ngInject*/ 
 function Config($locationProvider) {
     $locationProvider.html5Mode({
@@ -7,4 +9,3 @@ function Config($locationProvider) {
         requireBase: false
     });                                 
 };
-module.exports = Config;

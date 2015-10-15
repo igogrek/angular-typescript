@@ -1,6 +1,7 @@
 'use strict';
 
-/*@ngInject*/
+export = PeopleService;
+
 function PeopleService() {
     this.getUsers = function() {
 		return [
@@ -3009,4 +3010,3 @@ function PeopleService() {
 
     return this;
 };
-module.exports = PeopleService;

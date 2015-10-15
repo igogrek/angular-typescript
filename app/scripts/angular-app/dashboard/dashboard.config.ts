@@ -1,5 +1,7 @@
 'use strict';
 
+export = DashboardConfig;
+
 /*@ngInject*/ 
 function DashboardConfig($stateProvider, $urlRouterProvider) {
     // For any unmatched url, redirect to /dashboard
@@ -12,4 +14,3 @@ function DashboardConfig($stateProvider, $urlRouterProvider) {
             controllerAs: 'dashboard'
         })                  
 };
-module.exports = DashboardConfig;

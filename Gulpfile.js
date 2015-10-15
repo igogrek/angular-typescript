@@ -1,7 +1,6 @@
 'use strict';
 
 var browserify   = require('browserify');
-var ngAnnotate   = require('browserify-ngannotate');
 var del          = require('del');
 var gulp         = require('gulp');
 var autoprefixer = require('gulp-autoprefixer');
@@ -13,6 +12,7 @@ var sourcemaps   = require('gulp-sourcemaps');
 var plumber      = require('gulp-plumber');
 var uglify       = require('gulp-uglify');
 var runSequence  = require('run-sequence');
+var tsify        = require('tsify');
 var buffer       = require('vinyl-buffer');
 var source       = require('vinyl-source-stream');
 var watchify     = require('watchify');
@@ -78,7 +78,7 @@ gulp.task('styles', function() {
 // Bundle JS via browserify task
 gulp.task('browserify', function() {          
   var b = browserify({
-    entries: 'app/scripts/angular-app/app.js',
+    entries: 'app/scripts/angular-app/app.ts',
     debug: !production,
     detectGlobals: false,
     noParse: ['angular'],
@@ -87,8 +87,7 @@ gulp.task('browserify', function() {
     packageCache: {}
   });
   b = watchify(b, {delay: 0});
-  if (production)
-    b.transform(ngAnnotate);
+  b.plugin(tsify, { noImplicitAny: true });
   b.on('update', function(){
     browserifyBundle(b);
   });
