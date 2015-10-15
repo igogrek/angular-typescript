@@ -2,10 +2,14 @@
 
 export = Config;
 
-/*@ngInject*/ 
-function Config($locationProvider) {
-    $locationProvider.html5Mode({
-        enabled: true,
-        requireBase: false
-    });                                 
+class Config{
+    
+    static $inject = ['$locationProvider'];
+    
+    constructor($locationProvider: ng.ILocationProvider) {
+        $locationProvider.html5Mode({
+            enabled: true,
+            requireBase: false
+        });          
+    }                       
 };

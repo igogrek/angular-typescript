@@ -2,14 +2,17 @@
 
 export = ChartConfig;
 
-/*@ngInject*/ 
-function ChartConfig($stateProvider) {
-    // For any unmatched url, redirect to /dashboard               
-    $stateProvider
-        .state('chart', {
-            url: "/chart",
-            templateUrl: "views/chart/chart.html",
-            controller: 'ChartController',
-            controllerAs: 'chart'
-        })                  
+class ChartConfig {
+
+    static $inject = ['$stateProvider'];
+
+    constructor($stateProvider) {
+        $stateProvider
+            .state('chart', {
+                url: "/chart",
+                templateUrl: "views/chart/chart.html",
+                controller: 'ChartController',
+                controllerAs: 'chart'
+            })
+    }
 };
