@@ -79,11 +79,14 @@ gulp.task('styles', function() {
 gulp.task('browserify', function() {          
   var b = browserify({
     entries: 'app/scripts/angular-app/app.js',
-    debug: true,
+    debug: !production,
     detectGlobals: false,
-    noParse: ['angular']
+    noParse: ['angular'],
+    // watchify mandatory
+    cache: {},
+    packageCache: {}
   });
-  b = watchify(b);
+  b = watchify(b, {delay: 0});
   if (production)
     b.transform(ngAnnotate);
   b.on('update', function(){
