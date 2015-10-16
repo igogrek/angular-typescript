@@ -48,7 +48,7 @@ class DashboardController {
     this.secondData[1].push(this.getRandomValue(0, 500));
   }
 
-  getRandomValue(min, max) {
+  getRandomValue(min, max): number {
     return Math.random() * (max - min) + min;
   }
 

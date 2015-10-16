@@ -38,7 +38,7 @@ class ChartController {
     }
   }
 
-  getRandomValue(data) {
+  getRandomValue(data): number {
     var l = data.length, previous = l ? data[l - 1] : 50;
     var y = previous + Math.random() * 10 - 5;
     return y < 0 ? 0 : y > 100 ? 100 : y;
