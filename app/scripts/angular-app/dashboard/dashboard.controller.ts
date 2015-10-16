@@ -6,16 +6,16 @@ class DashboardController {
 
   myItems = [];
   mySelectedItems = [];
-  labels = ["Vasya", "Igor", "Petya", "Sasha", "Epifan"];
-  data = [300, 500, 100, 40, 120];
-  firstChartType = 'PolarArea';
-  secondLabels = ["January", "February", "March", "April", "May", "June", "July"];
-  secondSeries = ['Vasya', 'Petya'];
-  secondData = [
+  labels: string[] = ["Vasya", "Igor", "Petya", "Sasha", "Epifan"];
+  data: number[] = [300, 500, 100, 40, 120];
+  firstChartType: string = 'PolarArea';
+  secondLabels: string[] = ["January", "February", "March", "April", "May", "June", "July"];
+  secondSeries: string[] = ['Vasya', 'Petya'];
+  secondData: [number[]] = [
     [65, 59, 80, 81, 56, 55, 40],
     [28, 48, 40, 19, 86, 27, 90]
   ];
-  secondChartType = 'Line';
+  secondChartType: string = 'Line';
   options = {
     animationEasing: "easeOutCubic",
     pointDot: false,
