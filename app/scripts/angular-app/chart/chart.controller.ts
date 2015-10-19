@@ -16,7 +16,7 @@ class ChartController {
     scaleStepWidth: 10,
     scaleSteps: 10
   };
-  played: boolean = s;
+  played: boolean = true;
 
   static $inject = ['$interval'];
 
