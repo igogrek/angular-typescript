@@ -53,8 +53,8 @@ class DashboardController {
   }
 
   removeSelectedElements() {
-    for (var i = 0; i < this.mySelectedItems.length; i++) {
-      var item = this.mySelectedItems[i];
+    for (let i = 0; i < this.mySelectedItems.length; i++) {
+      let item = this.mySelectedItems[i];
       _.remove(this.myItems, {
         guid: item.guid
       });

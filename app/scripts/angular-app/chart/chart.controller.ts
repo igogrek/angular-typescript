@@ -16,7 +16,7 @@ class ChartController {
     scaleStepWidth: 10,
     scaleSteps: 10
   };
-  played: boolean = true;
+  played: boolean = s;
 
   static $inject = ['$interval'];
 
@@ -39,8 +39,8 @@ class ChartController {
   }
 
   getRandomValue(data): number {
-    var l = data.length, previous = l ? data[l - 1] : 50;
-    var y = previous + Math.random() * 10 - 5;
+    let l = data.length, previous = l ? data[l - 1] : 50;
+    let y = previous + Math.random() * 10 - 5;
     return y < 0 ? 0 : y > 100 ? 100 : y;
   }
 };
