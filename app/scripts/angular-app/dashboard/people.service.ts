@@ -1,9 +1,7 @@
 'use strict';
 
-export = PeopleService;
-
-function PeopleService() {
-    this.getUsers = function() {
+export class PeopleService {
+    getUsers() {
 		return [
   {
     "_id": "55fc15d7e1a7d5980ac6f6cb",
@@ -3007,6 +3005,4 @@ function PeopleService() {
   }
 ];
     };
-
-    return this;
 };

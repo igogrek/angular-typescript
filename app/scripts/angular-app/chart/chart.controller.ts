@@ -1,6 +1,6 @@
 'use strict';
 
-class ChartController {
+export class ChartController {
 
   data = [[]];
   labels = [];
@@ -44,5 +44,3 @@ class ChartController {
     return y < 0 ? 0 : y > 100 ? 100 : y;
   }
 };
-
-export = ChartController;

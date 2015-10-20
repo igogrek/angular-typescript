@@ -1,8 +1,6 @@
 'use strict';
 
-export = DashboardConfig;
-
-class DashboardConfig {
+export class DashboardConfig {
 
     static $inject = ['$stateProvider', '$urlRouterProvider'];
 

@@ -1,8 +1,6 @@
 'use strict';
 
-export = ChartConfig;
-
-class ChartConfig {
+export class ChartConfig {
 
     static $inject = ['$stateProvider'];
 

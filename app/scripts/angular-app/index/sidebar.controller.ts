@@ -1,6 +1,6 @@
 'use strict';
 
-class SidebarController {
+export class SidebarController {
 
     static $inject = ['$location'];
 
@@ -10,5 +10,3 @@ class SidebarController {
         return viewLocation === this.$location.path();
     };
 };
-
-export = SidebarController;

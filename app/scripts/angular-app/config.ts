@@ -1,8 +1,6 @@
 'use strict';
 
-export = Config;
-
-class Config{
+export class Config {
     
     static $inject = ['$locationProvider'];
     

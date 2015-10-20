@@ -2,7 +2,7 @@
 
 import _ = require('lodash');
 
-class DashboardController {
+export class DashboardController {
 
   myItems = [];
   mySelectedItems = [];
@@ -61,5 +61,3 @@ class DashboardController {
     }
   };
 };
-
-export = DashboardController;
