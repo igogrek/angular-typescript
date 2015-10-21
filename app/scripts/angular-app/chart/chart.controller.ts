@@ -26,7 +26,10 @@ export class ChartController {
         this.getLiveChartData();
     }, 40);
   }
-
+  
+  /**
+   * Update chart data
+   */
   getLiveChartData() {
     if (this.data[0].length) {
       this.labels = this.labels.slice(1);
@@ -38,7 +41,11 @@ export class ChartController {
     }
   }
 
-  getRandomValue(data: any) {
+  /**
+   * Get random value
+   * @param data Data seed to generate random
+   */
+  getRandomValue(data: any[]) {
     let l = data.length, previous = l ? data[l - 1] : 50;
     let y = previous + Math.random() * 10 - 5;
     return y < 0 ? 0 : y > 100 ? 100 : y;

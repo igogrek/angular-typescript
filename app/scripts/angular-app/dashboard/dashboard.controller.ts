@@ -38,11 +38,17 @@ export class DashboardController {
     this.myItems = peopleService.getUsers();
   }
 
+  /**
+   * Get chart data for first chart
+   */
   getLiveChartData() {
     this.data.splice(0, 1);
     this.data.push(this.getRandomValue(0, 500));
   }
-
+  
+  /**
+   * Get chart data for second chart
+   */
   getSecondLiveChartData() {
     this.secondData[0].splice(0, 1);
     this.secondData[0].push(this.getRandomValue(0, 500));
@@ -50,10 +56,19 @@ export class DashboardController {
     this.secondData[1].push(this.getRandomValue(0, 500));
   }
 
+  /**
+  * Generate random value in range
+  * @param min Minimal number to generate value
+  * @param max Maximum number to generate value
+  * @returns Random number in range
+  */
   getRandomValue(min: number, max: number): number {
     return Math.random() * (max - min) + min;;
   }
 
+  /**
+  * Remove elements from table
+  */
   removeSelectedElements() {
     for (let i = 0; i < this.mySelectedItems.length; i++) {
       let item = this.mySelectedItems[i];
