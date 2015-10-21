@@ -1,11 +1,13 @@
 'use strict';
+/// <reference path="../../../../typings/lodash.d.ts" />
 
+import interfaces = require('../common/interfaces');
 import _ = require('lodash');
 
 export class DashboardController {
-
-  myItems = [];
-  mySelectedItems = [];
+  
+  myItems: any[] = [];
+  mySelectedItems: any[] = [];
   labels: string[] = ["Vasya", "Igor", "Petya", "Sasha", "Epifan"];
   data: number[] = [300, 500, 100, 40, 120];
   firstChartType: string = 'PolarArea';
@@ -24,7 +26,7 @@ export class DashboardController {
 
   static $inject = ['$interval', 'peopleService'];
 
-  constructor($interval: ng.IIntervalService, peopleService) {
+  constructor($interval: ng.IIntervalService, peopleService: interfaces.IPeopleService) {
     $interval(() => {
       this.getLiveChartData();
     }, 5000);
@@ -48,8 +50,8 @@ export class DashboardController {
     this.secondData[1].push(this.getRandomValue(0, 500));
   }
 
-  getRandomValue(min, max): number {
-    return Math.random() * (max - min) + min;
+  getRandomValue(min: number, max: number): number {
+    return Math.random() * (max - min) + min;;
   }
 
   removeSelectedElements() {

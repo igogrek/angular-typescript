@@ -96,6 +96,7 @@ gulp.task('browserify', function() {
 
 function browserifyBundle(b) {
   return b.bundle()
+    .on('error', function (error) { console.error(error.toString()); })
     .pipe(source('bundle.js'))
     .pipe(buffer())
     .pipe(gulpif(production, cachebust.resources()))

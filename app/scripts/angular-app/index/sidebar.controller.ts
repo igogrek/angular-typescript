@@ -6,7 +6,7 @@ export class SidebarController {
 
     constructor(private $location: ng.ILocationService) { }
 
-    isActive(viewLocation) {
+    isActive(viewLocation: string) {
         return viewLocation === this.$location.path();
     };
 };

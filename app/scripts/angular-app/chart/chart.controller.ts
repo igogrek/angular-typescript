@@ -2,8 +2,8 @@
 
 export class ChartController {
 
-  data = [[]];
-  labels = [];
+  data: any[][] = [[]];
+  labels: any[] = [];
   options = {
     animation: false,
     animationSteps: 10,
@@ -38,7 +38,7 @@ export class ChartController {
     }
   }
 
-  getRandomValue(data): number {
+  getRandomValue(data: any) {
     let l = data.length, previous = l ? data[l - 1] : 50;
     let y = previous + Math.random() * 10 - 5;
     return y < 0 ? 0 : y > 100 ? 100 : y;

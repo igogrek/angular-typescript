@@ -1,3 +1,6 @@
+/// <reference path="../../../typings/node.d.ts" />
+/// <reference path="../../../typings/angular.d.ts" />
+
 'use strict';
 
 import angular = require('angular');
@@ -5,8 +8,6 @@ import angular = require('angular');
 require('../angular-ui/angular-ui-router');
 require('./dashboard/dashboard.module');
 require('./chart/chart.module');
-
-require('./index/tests');
 
 console.log('asd');
 

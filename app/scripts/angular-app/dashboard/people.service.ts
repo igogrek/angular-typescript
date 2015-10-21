@@ -1,6 +1,8 @@
+import interfaces = require('../common/interfaces');
+
 'use strict';
 
-export class PeopleService {
+export class PeopleService implements interfaces.IPeopleService {
     getUsers() {
 		return [
   {

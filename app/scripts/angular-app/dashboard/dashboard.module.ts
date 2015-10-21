@@ -11,6 +11,6 @@ export = angular.module('dashboard', ['ui.router', 'chart.js', 'trNgGrid'])
 	.service('peopleService', require('./people.service').PeopleService)
 	.config(require('./dashboard.config').DashboardConfig)
 	.filter("fullName", function () {
-		return function (fieldValueUnused, item) {
+		return function (fieldValueUnused: any, item: any) {
 			return item.name.first + " " + item.name.last;
 		}})
