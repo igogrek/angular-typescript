@@ -1,5 +1,3 @@
-/// <reference path="../../../../typings/angular-ui-router.d.ts" />
-
 'use strict';
 
 export class ChartConfig {

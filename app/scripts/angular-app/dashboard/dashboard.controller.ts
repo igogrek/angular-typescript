@@ -1,5 +1,4 @@
 'use strict';
-/// <reference path="../../../../typings/lodash.d.ts" />
 
 import interfaces = require('../common/interfaces');
 import _ = require('lodash');

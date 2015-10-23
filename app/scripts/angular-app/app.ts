@@ -1,5 +1,7 @@
 /// <reference path="../../../typings/node.d.ts" />
+/// <reference path="../../../typings/lodash.d.ts" />
 /// <reference path="../../../typings/angular.d.ts" />
+/// <reference path="../../../typings/angular-ui-router.d.ts" />
 
 'use strict';
 
