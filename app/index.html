@@ -36,18 +36,12 @@
         </div>
       </div>
     </nav>
-    <div class="container-fluid"  ng-controller="SidebarController as sidebar">
+    <div class="container-fluid" ng-controller="SidebarController as sidebar">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li ng-class="{ active: sidebar.isActive('/dashboard')}"><a ui-sref="dashboard">Dashboard</a></li>
-            <li ng-class="{ active: sidebar.isActive('/chart')}"><a ui-sref="chart">Charts</a></li>
+            <li ng-cloak ng-repeat="nav in sidebar.navs" ng-class="{ active: sidebar.isActive(nav)}"><a class="nav-capitalize" ui-sref="{{nav.name}}">{{nav.name}}</a></li>
           </ul>
-          <!--<ul class="nav nav-sidebar">
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
-          </ul>-->
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ui-view>         
           

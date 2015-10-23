@@ -19,6 +19,9 @@ body {
 .sidebar {
   display: none;
 }
+.nav-capitalize {
+  text-transform: capitalize;
+}
 @media (min-width: 768px) {
   .sidebar {
     position: fixed;
