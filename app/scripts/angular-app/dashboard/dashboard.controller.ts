@@ -28,12 +28,14 @@ export class DashboardController {
 
   constructor($interval: ng.IIntervalService, peopleService: interfaces.IPeopleService) {
     $interval(() => {
-      this.getLiveChartData();
+      if (document.hasFocus())
+        this.getLiveChartData();
     }, 5000);
 
     $interval(() => {
-      this.getSecondLiveChartData();
-    }, 5000);
+      if (document.hasFocus())
+        this.getSecondLiveChartData();
+    }, 1000);
 
     this.myItems = peopleService.getUsers();
   }
