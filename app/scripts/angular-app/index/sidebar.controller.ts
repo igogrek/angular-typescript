@@ -4,7 +4,7 @@ import _ = require('lodash');
 
 export class SidebarController {
         
-    possibleNavs: INav[] = [{name:'dashboard'}, {name:'chart'}];
+    possibleNavs: INav[] = [{name:'dashboard'}, {name:'chart'}, {name: 'highcharts'}];
     navs: INav[] = [];
 
     static $inject = ['$location','$state'];

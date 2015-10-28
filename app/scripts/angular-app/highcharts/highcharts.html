@@ -1,0 +1,11 @@
+<button class="btn btn-primary" ng-click="highcharts.addSeries()">Add new series</button>
+<button class="btn btn-primary" ng-click="highcharts.addPoints()">Add points to series</button>
+<button class="btn btn-primary" ng-click="highcharts.removeRandomSeries()">Remove random series</button>
+<button class="btn btn-primary" ng-click="highcharts.swapChartType()">Swap Chart Type</button>
+<form class="form">
+	Min:
+	<input type="number" ng-model="highcharts.chartConfig.xAxis.currentMin"> 
+	Max:
+	<input type="number" ng-model="highcharts.chartConfig.xAxis.currentMax">
+</form>
+<highchart id="chart1" config="highcharts.chartConfig"></highchart>
