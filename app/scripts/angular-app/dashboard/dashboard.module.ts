@@ -2,9 +2,9 @@
 
 import angular = require('angular');
 
-require('../../angular-ui/angular-ui-router');
-require('../../angular-charts/angular-chart');
-require('../../trnggrid/trNgGrid');
+require('angular-ui-router');
+require('angular-chart.js');
+require('tr-ng-grid/trNgGrid');
 
 export = angular.module('dashboard', ['ui.router', 'chart.js', 'trNgGrid'])
 	.controller('DashboardController', require('./dashboard.controller').DashboardController)

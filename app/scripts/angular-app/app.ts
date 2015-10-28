@@ -7,7 +7,8 @@
 
 import angular = require('angular');
 
-require('../angular-ui/angular-ui-router');
+require('angular-ui-router');
+
 require('./dashboard/dashboard.module');
 require('./chart/chart.module');
 
