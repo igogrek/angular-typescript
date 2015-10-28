@@ -128,5 +128,8 @@ gulp.task('watch', function() {
   gulp.watch(['app/**/*.html'], [
     'views'
   ]);
+  gulp.watch(['app/index.html'], [
+    'inject'
+  ]);
   gulp.watch('./dist/**').on('change', refresh.changed);
 });
