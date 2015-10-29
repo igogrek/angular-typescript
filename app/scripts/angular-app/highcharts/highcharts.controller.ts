@@ -2,21 +2,44 @@
 
 export class HighchartsController {
   currentChartType: number = 0;
-  chartTypes: string[] = ['bar', 'line', 'area', 'spline', 'areaspline', 'column', 'pie', 'scatter'];
+  chartTypes: string[] = ['line', 'spline', 'bar', 'column', 'area', 'areaspline', 'pie', 'scatter'];
+  currentStackType: number = 0;
+  stackingTypes: string[] = [undefined, 'normal', 'percent'];
   chartConfig = {
     options: {
       //This is the Main Highcharts chart config. Any Highchart options are valid here.
       //will be overriden by values specified below.
       chart: {
         type: 'line',
-        zoomType: 'x'
+        zoomType: 'x',
+        options3d: {
+          enabled: false,
+          alpha: 15,
+          beta: 15,
+          depth: 50,
+          viewDistance: 25
+        }
       },
       tooltip: {
         style: {
           padding: 10,
           fontWeight: 'bold'
         }
-      }
+      },
+      plotOptions: {
+        area: {
+          stacking: undefined
+        },
+        line: {
+          stacking: undefined
+        },
+        column: {
+          stacking: undefined
+        },
+        bar: {
+          stacking: undefined
+        }
+      },
     },
 
     series: [{
@@ -64,6 +87,14 @@ export class HighchartsController {
   }
 
   swapChartType() {
-    this.chartConfig.options.chart.type = this.chartTypes[this.currentChartType++ % this.chartTypes.length];
+    this.chartConfig.options.chart.type = this.chartTypes[++this.currentChartType % this.chartTypes.length];
+    this.chartConfig.options.chart.options3d.enabled = this.chartConfig.options.chart.type == 'bar' ||  this.chartConfig.options.chart.type == 'column'? true : false;
+  }
+
+  swapStackingType() {
+    this.chartConfig.options.plotOptions.line.stacking =
+    this.chartConfig.options.plotOptions.area.stacking =
+    this.chartConfig.options.plotOptions.column.stacking =
+    this.chartConfig.options.plotOptions.bar.stacking = this.stackingTypes[++this.currentStackType % this.stackingTypes.length];
   }
 };
