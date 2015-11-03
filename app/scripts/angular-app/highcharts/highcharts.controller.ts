@@ -28,16 +28,16 @@ export class HighchartsController {
       },
       plotOptions: {
         area: {
-          stacking: undefined
+          stacking: 'normal'
         },
         line: {
-          stacking: undefined
+          stacking: 'normal'
         },
         column: {
-          stacking: undefined
+          stacking: 'normal'
         },
         bar: {
-          stacking: undefined
+          stacking: 'normal'
         }
       },
     },
@@ -65,7 +65,7 @@ export class HighchartsController {
   }
 
   addSeries() {
-    var rnd = []
+    var rnd:any[] = []
     for (var i = 0; i < 10; i++) {
       rnd.push(Math.floor(Math.random() * 20) + 1)
     }
@@ -95,6 +95,6 @@ export class HighchartsController {
     this.chartConfig.options.plotOptions.line.stacking =
     this.chartConfig.options.plotOptions.area.stacking =
     this.chartConfig.options.plotOptions.column.stacking =
-    this.chartConfig.options.plotOptions.bar.stacking = this.stackingTypes[++this.currentStackType % this.stackingTypes.length];
+    this.chartConfig.options.plotOptions.bar.stacking = this.stackingTypes[this.currentStackType++ % this.stackingTypes.length];
   }
 };
