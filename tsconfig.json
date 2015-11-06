@@ -1,5 +1,11 @@
 {
     "compilerOptions": {
-        "module": "commonjs"
-    }
+        "module": "commonjs",
+        "target": "es5",
+        "sourceMap": true
+    },
+    "files": [
+        "app/scripts/angular-app/app.ts",
+        "typings/tsd.d.ts"
+    ]
 }
