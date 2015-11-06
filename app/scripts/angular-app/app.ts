@@ -1,7 +1,6 @@
-/// <reference path="../../../typings/node.d.ts" />
-/// <reference path="../../../typings/lodash.d.ts" />
-/// <reference path="../../../typings/angular.d.ts" />
-/// <reference path="../../../typings/angular-ui-router.d.ts" />
+/// <reference path="../../../typings/lodash/lodash.d.ts" />
+/// <reference path="../../../typings/angularjs/angular.d.ts" />
+/// <reference path="../../../typings/angular-ui-router/angular-ui-router.d.ts" />
 'use strict';
 
 import * as angular from 'angular';
