@@ -8,6 +8,7 @@ var CacheBuster  = require('gulp-cachebust');
 var concat       = require('gulp-concat');
 var gulpif       = require('gulp-if');
 var minifyCss    = require('gulp-minify-css');
+var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
 var plumber      = require('gulp-plumber');
 var uglify       = require('gulp-uglify');
@@ -17,7 +18,7 @@ var buffer       = require('vinyl-buffer');
 var source       = require('vinyl-source-stream');
 var watchify     = require('watchify');
 var argv         = require('yargs').argv;
-//var sass = require('gulp-sass');
+
 
 var cachebust = new CacheBuster();
 var production = argv.production;
@@ -63,10 +64,9 @@ gulp.task('fonts', function() {
 });
 // Prepare styles task
 gulp.task('styles', function() {
-  // gulp.src('app/styles/*.scss')  
-  // .pipe(sass()) 
-  return gulp.src('app/styles/*.css')     
+  return gulp.src('app/styles/*.scss')     
     .pipe(plumber()) 
+    .pipe(sass()) 
     .pipe(gulpif(!production, sourcemaps.init()))  
     .pipe(autoprefixer())
     .pipe(gulpif(production, minifyCss()))    
@@ -118,17 +118,14 @@ gulp.task('watch', function() {
   server.listen(serverport);
   // Start live reload
   refresh.listen(livereloadport);
-  // Watch our sass files
-  // gulp.watch(['app/styles/**/*.scss',], [
-  //   'styles'
-  // ]);
-  gulp.watch(['app/styles/**/*.css',], [
+  // Watch sass, vies and index
+  gulp.watch('app/styles/**/*.scss', [
     'styles'
   ]);
-  gulp.watch(['app/**/*.html'], [
+  gulp.watch('app/**/*.html', [
     'views'
   ]);
-  gulp.watch(['app/index.html'], [
+  gulp.watch('app/index.html', [
     'inject'
   ]);
   gulp.watch('./dist/**').on('change', refresh.changed);
