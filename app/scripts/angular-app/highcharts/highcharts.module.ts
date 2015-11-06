@@ -1,15 +1,17 @@
 'use strict';
 
-import angular = require('angular');
+import * as angular from 'angular';
+import 'angular-ui-router';
+import 'highcharts-browserify';
+import 'highcharts-browserify/themes/grid-light';
+//import 'highcharts-browserify/themes/dark-unica';
+import 'highcharts-browserify/3d';
+import 'highcharts-ng';
+import 'angularjs-slider';
 
-require('angular-ui-router');
-require('highcharts-browserify');
-require('highcharts-browserify/themes/grid-light');
-require('highcharts-browserify/3d');
-//require('highcharts-browserify/themes/dark-unica');
-require('highcharts-ng');
-require('angularjs-slider');
+import {HighchartsController} from './highcharts.controller';
+import {HighchartsConfig} from './highcharts.config';
 
 export = angular.module('highcharts', ['ui.router', 'highcharts-ng', 'rzModule'])
-	.controller('HighchartsController', require('./highcharts.controller').HighchartsController)
-	.config(require('./highcharts.config').HighchartsConfig);
+	.controller('HighchartsController', HighchartsController)
+	.config(HighchartsConfig);

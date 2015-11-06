@@ -1,15 +1,19 @@
 'use strict';
 
-import angular = require('angular');
+import * as angular from 'angular';
 
-require('angular-ui-router');
-require('angular-chart.js');
-require('tr-ng-grid/trNgGrid');
+import 'angular-ui-router';
+import 'angular-chart.js';
+import 'tr-ng-grid/trNgGrid';
+
+import {DashboardController} from './dashboard.controller';
+import {PeopleService} from './people.service';
+import {DashboardConfig} from './dashboard.config';
 
 export = angular.module('dashboard', ['ui.router', 'chart.js', 'trNgGrid'])
-	.controller('DashboardController', require('./dashboard.controller').DashboardController)
-	.service('peopleService', require('./people.service').PeopleService)
-	.config(require('./dashboard.config').DashboardConfig)
+	.controller('DashboardController', DashboardController)
+	.service('peopleService', PeopleService)
+	.config(DashboardConfig)
 	.filter("fullName", function () {
 		return function (fieldValueUnused: any, item: any) {
 			return item.name.first + " " + item.name.last;

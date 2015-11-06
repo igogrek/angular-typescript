@@ -2,17 +2,29 @@
 /// <reference path="../../../typings/lodash.d.ts" />
 /// <reference path="../../../typings/angular.d.ts" />
 /// <reference path="../../../typings/angular-ui-router.d.ts" />
-
 'use strict';
 
-import angular = require('angular');
+import * as angular from 'angular';
 
-require('angular-ui-router');
+import 'angular-ui-router';
 
-require('./dashboard/dashboard.module');
-require('./chart/chart.module');
-require('./highcharts/highcharts.module');
+import './dashboard/dashboard.module';
+import './chart/chart.module';
+import './highcharts/highcharts.module';
 
-angular.module('AngularApp', ['ui.router', 'dashboard', 'chart', 'highcharts'])
-	.controller('SidebarController', require('./index/sidebar.controller').SidebarController)
-	.config(require('./config').Config);		
+import {SidebarController} from './index/sidebar.controller';
+import {Config} from './config';
+
+const external = [
+	'ui.router'
+];
+const custom = [
+	'dashboard',
+	'chart',
+	'highcharts'
+];
+
+angular.module('AngularApp', external.concat(custom))
+	.constant('customModules', custom)
+	.controller('SidebarController', SidebarController)
+	.config(Config);	

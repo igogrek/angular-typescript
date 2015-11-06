@@ -1,23 +1,23 @@
 'use strict';
 
-import _ = require('lodash');
+import * as _ from 'lodash';
 
 export class SidebarController {
         
     possibleNavs: INav[] = [{name:'dashboard'}, {name:'chart'}, {name: 'highcharts'}];
     navs: INav[] = [];
 
-    static $inject = ['$location','$state'];
+    static $inject = ['$location','$state', 'customModules'];
 
-    constructor(private $location: ng.ILocationService, $state: angular.ui.IStateService) {
+    constructor(private $location: ng.ILocationService, $state: angular.ui.IStateService, customModules: string[]) {
         // Check all existing states and compare with possible navs 
         let allStates = $state.get();
-        _.forEach(this.possibleNavs, (nav) => {
-            if(_.some(allStates, nav)) {
+        _.forEach(customModules, (nav) => {
+            if(_.some(allStates, {name:nav})) {
                 // Show if state exists
-                this.navs.push(nav);
+                this.navs.push({name:nav});
             }
-        });        
+        });    
     }
 
     /**

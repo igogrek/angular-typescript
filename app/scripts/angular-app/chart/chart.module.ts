@@ -1,10 +1,12 @@
 'use strict';
 
-import angular = require('angular');
+import * as angular from 'angular';
 
-require('angular-ui-router');
-require('angular-chart.js');
+import 'angular-ui-router';
+import 'angular-chart.js';
+import {ChartController} from './chart.controller';
+import {ChartConfig} from './chart.config';
 
 export = angular.module('chart', ['ui.router', 'chart.js'])
-	.controller('ChartController', require('./chart.controller').ChartController)
-	.config(require('./chart.config').ChartConfig);
+	.controller('ChartController', ChartController)
+	.config(ChartConfig);

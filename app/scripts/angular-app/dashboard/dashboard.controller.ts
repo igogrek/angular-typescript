@@ -1,7 +1,7 @@
 'use strict';
 
-import interfaces = require('../common/interfaces');
-import _ = require('lodash');
+import {IPeopleService} from '../common/interfaces';
+import * as _ from 'lodash';
 
 export class DashboardController {
   
@@ -25,7 +25,7 @@ export class DashboardController {
 
   static $inject = ['$interval', 'peopleService'];
 
-  constructor($interval: ng.IIntervalService, peopleService: interfaces.IPeopleService) {
+  constructor($interval: ng.IIntervalService, peopleService: IPeopleService) {
     $interval(() => {
       if (document.hasFocus()) {
         this.getLiveChartData();
