@@ -5,7 +5,6 @@ var del           = require('del');
 var gulp          = require('gulp');
 var autoprefixer  = require('gulp-autoprefixer');
 var CacheBuster   = require('gulp-cachebust');
-var concat        = require('gulp-concat');
 var gulpif        = require('gulp-if');
 var minifyCss     = require('gulp-minify-css');
 var sass          = require('gulp-sass');
