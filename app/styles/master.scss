@@ -1,3 +1,10 @@
+@import url('bootstrap.min.css');
+@import url('angular-chart.css');
+@import url('rzslider.css');
+@import url('trNgGrid.css');
+
+@import 'dashboard';
+
 /* Angular ng-cloack fix */
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
