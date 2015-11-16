@@ -1,7 +1,11 @@
 # angular-typescript
 
-<img src="https://david-dm.org/igogrek/angular-typescript/status.svg" alt="Dependencies">
-<img src="https://david-dm.org/igogrek/angular-typescript/dev-status.svg" alt="Dev dependencies">
+<a href="https://david-dm.org/igogrek/angular-typescript/">
+  <img src="https://david-dm.org/igogrek/angular-typescript/status.svg" alt="Dependencies">
+</a>
+<a href="https://david-dm.org/igogrek/angular-typescript/#info=devDependencies">
+  <img src="https://david-dm.org/igogrek/angular-typescript/dev-status.svg" alt="Dev dependencies">
+</a>
 
 Angular typescript starter project
 
