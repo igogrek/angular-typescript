@@ -1,4 +1,8 @@
 # angular-typescript
+
+<img src="https://david-dm.org/igogrek/angular-typescript/status.svg" alt="Dependencies">
+<img src="https://david-dm.org/igogrek/angular-typescript/dev-status.svg" alt="Dev dependencies">
+
 Angular typescript starter project
 
 This project is intended to be simple AngularJS + Typescript starter application.
