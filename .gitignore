@@ -1,3 +1,4 @@
 node_modules/*
 dist/*
 .tachikoma.yml
+.travis.yml
