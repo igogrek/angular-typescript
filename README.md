@@ -1,5 +1,8 @@
 # angular-typescript
 
+<a href="https://travis-ci.org/Igogrek/angular-typescript">
+  <img alt="Build status" src="https://travis-ci.org/Igogrek/angular-typescript.svg">
+</a>
 <a href="https://david-dm.org/igogrek/angular-typescript/">
   <img src="https://david-dm.org/igogrek/angular-typescript/status.svg" alt="Dependencies">
 </a>
