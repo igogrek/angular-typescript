@@ -1,14 +1,9 @@
 # angular-typescript
 
-<a href="https://travis-ci.org/Igogrek/angular-typescript">
-  <img alt="Build status" src="https://travis-ci.org/Igogrek/angular-typescript.svg">
-</a>
-<a href="https://david-dm.org/igogrek/angular-typescript/">
-  <img src="https://david-dm.org/igogrek/angular-typescript/status.svg" alt="Dependencies">
-</a>
-<a href="https://david-dm.org/igogrek/angular-typescript/#info=devDependencies">
-  <img src="https://david-dm.org/igogrek/angular-typescript/dev-status.svg" alt="Dev dependencies">
-</a>
+[![Build Status](https://travis-ci.org/Igogrek/angular-typescript.svg?branch=master)](https://travis-ci.org/Igogrek/angular-typescript)
+[![Dependencies](https://david-dm.org/igogrek/angular-typescript/status.svg)](https://david-dm.org/igogrek/angular-typescript)
+[![Dev Dependencies](https://david-dm.org/igogrek/angular-typescript/dev-status.svg)](https://david-dm.org/igogrek/angular-typescript/#info=devDependencies)
+
 
 Angular typescript starter project
 
