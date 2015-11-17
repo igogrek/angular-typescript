@@ -39,12 +39,14 @@ server.all('/*', function (req, res) {
   res.sendFile('index.html', { root: 'dist' });
 });
 
+var build = false;
 // Default task - build and watch
 gulp.task('default', function (done) {
   return runSequence('clean', ['views', 'fonts', 'styles', 'browserify'], 'inject', 'watch', done);
 });
 // Build only task
 gulp.task('build', function (done) {
+  build = true;
   return runSequence('clean', ['views', 'fonts', 'styles', 'browserify'], 'inject', done);
 });
 // Clean dist folder task
@@ -86,7 +88,8 @@ gulp.task('browserify', function () {
     cache: {},
     packageCache: {}
   });
-  b = watchify(b, { delay: 0 });
+  if (!build)
+    b = watchify(b, { delay: 0 });
   b.plugin(tsify, { noImplicitAny: true });
   b.on('update', function () {
     browserifyBundle(b);
