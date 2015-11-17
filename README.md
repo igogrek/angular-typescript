@@ -1,8 +1,8 @@
 # angular-typescript
 
 [![Build Status](https://img.shields.io/travis/Igogrek/angular-typescript.svg?style=flat-square)](https://travis-ci.org/Igogrek/angular-typescript)
-[![Dependencies](https://david-dm.org/igogrek/angular-typescript/status.svg?style=flat-square)](https://david-dm.org/igogrek/angular-typescript)
-[![Dev Dependencies](https://david-dm.org/igogrek/angular-typescript/dev-status.svg?style=flat-square)](https://david-dm.org/igogrek/angular-typescript/#info=devDependencies)
+[![Dependencies](https://img.shields.io/david/Igogrek/angular-typescript.svg?style=flat-square)](https://david-dm.org/igogrek/angular-typescript)
+[![Dev Dependencies](https://img.shields.io/david/dev/Igogrek/angular-typescript.svg?style=flat-square)](https://david-dm.org/igogrek/angular-typescript/#info=devDependencies)
 
 
 Angular typescript starter project
