@@ -7,18 +7,13 @@
     "url": "https://github.com/Igogrek/angular-typescript.git"
   },
   "version": "0.0.1",
-  "scripts": {
-    "postinstall": "gulp build",
-    "start": "gulp"
-  },
   "devDependencies": {
-    "typescript": "~1.6.2",
     "angular": "~1.4.7",
     "browserify": "^12.0.1",
     "connect-livereload": "~0.5.3",
     "del": "^2.0.2",
     "express": "~4.13.3",
-
+    "gulp": "~3.9.0",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-cachebust": "0.0.6",
     "gulp-if": "^2.0.0",
@@ -39,7 +34,6 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
-        "gulp": "~3.9.0",
     "angular-chart.js": "^0.8.5",
     "angular-ui-router": "^0.2.15",
     "angularjs-slider": "^2.0.0",
