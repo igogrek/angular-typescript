@@ -34,7 +34,7 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
-    "angular-chart.js": "^0.8.5",
+    "angular-chart.js": "0.8.4",
     "angular-ui-router": "^0.2.15",
     "angularjs-slider": "^2.0.0",
     "gulp-sass": "^2.1.0",
