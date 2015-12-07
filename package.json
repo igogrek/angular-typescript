@@ -24,7 +24,7 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.4.1",
     "run-sequence": "^1.1.4",
-    "tsify": "^0.12.2",
+    "tsify": "^0.13.1",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.4.0",
