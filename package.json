@@ -9,7 +9,7 @@
   "version": "0.0.1",
   "devDependencies": {
     "angular": "~1.4.7",
-    "browserify": "^12.0.1",
+    "browserify": "^13.0.0",
     "connect-livereload": "~0.5.3",
     "del": "^2.0.2",
     "express": "~4.13.3",
@@ -40,7 +40,7 @@
     "gulp-sass": "^2.1.0",
     "highcharts-browserify": "^2.0.0",
     "highcharts-ng": "0.0.11",
-    "lodash": "^3.10.1",
+    "lodash": "^4.0.0",
     "tr-ng-grid": "^3.1.5"
   }
 }
