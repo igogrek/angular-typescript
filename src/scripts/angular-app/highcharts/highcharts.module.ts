@@ -8,6 +8,7 @@ import 'highcharts-browserify/themes/grid-light';
 import 'highcharts-browserify/3d';
 import 'highcharts-ng';
 import 'angularjs-slider';
+import 'angularjs-slider/dist/rzslider.css';
 
 import {HighchartsController} from './highcharts.controller';
 import {HighchartsConfig} from './highcharts.config';

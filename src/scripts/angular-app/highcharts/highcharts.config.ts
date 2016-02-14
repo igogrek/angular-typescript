@@ -1,5 +1,7 @@
 'use strict';
 
+let highcharts =  require('./highcharts.html');
+
 export class HighchartsConfig {
 
     static $inject = ['$stateProvider'];
@@ -8,7 +10,7 @@ export class HighchartsConfig {
         $stateProvider
             .state('highcharts', {
                 url: "/highcharts",
-                templateUrl: "views/highcharts/highcharts.html",
+                template: highcharts,
                 controller: 'HighchartsController',
                 controllerAs: 'highcharts'
             })

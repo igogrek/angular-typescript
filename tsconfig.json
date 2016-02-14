@@ -4,8 +4,5 @@
         "target": "es5",
         "sourceMap": true
     },
-    "files": [
-        "app/scripts/angular-app/app.ts",
-        "typings/tsd.d.ts"
-    ]
+    "exclude": ["node_modules"]
 }

@@ -1,5 +1,7 @@
 'use strict';
 
+let dashboard =  require('./dashboard.html');
+
 export class DashboardConfig {
 
     static $inject = ['$stateProvider', '$urlRouterProvider'];
@@ -10,7 +12,7 @@ export class DashboardConfig {
         $stateProvider
             .state('dashboard', {
                 url: "/dashboard",
-                templateUrl: "views/dashboard/dashboard.html",
+                template: dashboard,
                 controller: 'DashboardController',
                 controllerAs: 'dashboard'
             })

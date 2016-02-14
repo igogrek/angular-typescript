@@ -1,5 +1,7 @@
 'use strict';
 
+let dashboard =  require('./chart.html');
+
 export class ChartConfig {
 
     static $inject = ['$stateProvider'];
@@ -8,7 +10,7 @@ export class ChartConfig {
         $stateProvider
             .state('chart', {
                 url: "/chart",
-                templateUrl: "views/chart/chart.html",
+                template: dashboard,
                 controller: 'ChartController',
                 controllerAs: 'chart'
             })

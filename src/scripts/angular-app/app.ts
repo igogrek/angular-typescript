@@ -9,6 +9,8 @@ import './dashboard/dashboard.module';
 import './chart/chart.module';
 import './highcharts/highcharts.module';
 
+import '../../styles/master.scss';
+
 import {SidebarController} from './index/sidebar.controller';
 import {Config} from './config';
 

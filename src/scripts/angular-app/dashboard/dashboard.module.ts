@@ -4,7 +4,12 @@ import * as angular from 'angular';
 
 import 'angular-ui-router';
 import 'angular-chart.js';
+import 'angular-chart.js/dist/angular-chart.css';
 import 'tr-ng-grid/trNgGrid';
+import 'tr-ng-grid/trNgGrid.css';
+
+import './dashboard.scss';
+
 
 import {DashboardController} from './dashboard.controller';
 import {PeopleService} from './people.service';
