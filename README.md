@@ -13,5 +13,11 @@ There are plenty of options already available at the moment but most of them eit
 
 This project will try to find the middle between build complexity and feature fullness.
 
+### Dev TODO:
+  - Split dev and production builds
+  - Autodeploy to heroku or github pages
+  - Add karma with sample jasmine unit test
+
 ### TODO:
--- Add todo %)
+  - Fix styles and add animations
+  - Add fontawesome 
