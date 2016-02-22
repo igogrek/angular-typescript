@@ -22,7 +22,7 @@
     "style-loader": "^0.13.0",
     "typescript": "^1.7.5",
     "webpack": "^1.12.13",
-    "yargs": "^3.32.0"
+    "yargs": "^4.1.0"
   },
   "engines": {
     "node": ">=0.10.0"
