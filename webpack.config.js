@@ -6,7 +6,6 @@ module.exports = {
     entry: './src/scripts/angular-app/app.ts',
     output: {
         path: __dirname + '/dist',
-        publicPath: '/',
         filename: 'js/bundle.js'
     },
     resolve: {
