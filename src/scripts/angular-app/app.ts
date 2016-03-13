@@ -8,6 +8,7 @@ import 'angular-ui-router';
 import './dashboard/dashboard.module';
 import './chart/chart.module';
 import './highcharts/highcharts.module';
+import './notifyTest/notifyTest.module';
 
 import '../../styles/master.scss';
 
@@ -20,7 +21,8 @@ const external = [
 const custom = [
 	'dashboard',
 	'chart',
-	'highcharts'
+	'highcharts',
+    'notifyTest'
 ];
 
 angular.module('AngularApp', external.concat(custom))

@@ -1,0 +1,7 @@
+.sample-notification-container {
+    z-index: 100000;
+    width: 500px;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+}

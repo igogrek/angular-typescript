@@ -1,0 +1,23 @@
+<sample-notificator></sample-notificator>
+
+<div class="form-group">
+    <label>Notification header</label>
+    <input class="form-control" placeholder="Notification header" ng-model="notifyTest.header">
+</div>
+<div class="form-group">
+    <label>Notification content</label>
+    <input class="form-control" placeholder="Notification content" ng-model="notifyTest.content">
+</div>
+<div class="form-group">
+    <label>Notification category</label>
+    <select class="form-control" ng-model="notifyTest.category">
+        <option value="" disabled selected>Notification category</option>
+        <option>Info</option>
+        <option>Warning</option>
+        <option>Error</option>
+    </select>
+</div>
+
+<button class="btn btn-primary" ng-click="notifyTest.testNotification()" ng-disabled="!notifyTest.category">Create notification</button>
+
+<button class="btn btn-warning" ng-click="notifyTest.backendSimulate()">Backend simulate</button>
