@@ -1,8 +1,10 @@
 var autoprefixer = require('autoprefixer');
+var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin')
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var argv = require('yargs').argv;
 
-module.exports = {
+var config = {
     entry: './src/scripts/angular-app/app.ts',
     output: {
         path: __dirname + '/dist',
@@ -19,11 +21,11 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract('style-loader','css-loader!postcss-loader')
+                loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader')
             },
             {
                 test: /\.scss$/,
-                loader: ExtractTextPlugin.extract('style-loader','css-loader!sass-loader!postcss-loader')
+                loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader!postcss-loader')
             },
             {
                 test: /\.html$/,
@@ -35,17 +37,32 @@ module.exports = {
             }
         ]
     },
-    postcss: function () {
+    postcss: function() {
         return [autoprefixer];
     },
     devServer: {
         inline: true
     },
     plugins: [
-        new ExtractTextPlugin("css/styles.css"),
+        new ExtractTextPlugin('css/styles.css'),
         new HtmlWebpackPlugin({
             template: 'src/index.html',
-            favicon: 'src/images/favicon.ico'
+            favicon: 'src/images/favicon.ico',
+            hash: true
         })
     ]
 };
+
+if (!argv.production) {
+    config.debug = true;
+    config.devtool = 'source-map';
+} else {
+    config.plugins.push(new webpack.optimize.UglifyJsPlugin({
+        compress: false,
+        output: {
+            comments: false
+        }
+    }));
+}
+
+module.exports = config;
