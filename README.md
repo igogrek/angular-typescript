@@ -13,11 +13,13 @@ There are plenty of options already available at the moment but most of them eit
 
 This project will try to find the middle between build complexity and feature fullness.
 
+
+Pass **--production** for minified production build without sourcemaps.
+
 ### Dev TODO:
-  - Split dev and production builds
   - Autodeploy to heroku or github pages
-  - Add karma with sample jasmine unit test
 
 ### TODO:
   - Fix styles and add animations
-  - Add fontawesome 
+  - Add fontawesome
+  - Write real logic with some unit tests 
