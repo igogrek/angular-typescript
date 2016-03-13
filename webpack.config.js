@@ -21,11 +21,11 @@ var config = {
             },
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader')
+                loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!postcss-loader')
             },
             {
                 test: /\.scss$/,
-                loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader!postcss-loader')
+                loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!sass-loader?sourceMap!postcss-loader')
             },
             {
                 test: /\.html$/,
