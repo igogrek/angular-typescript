@@ -13,38 +13,38 @@
   },
   "version": "0.0.1",
   "devDependencies": {
-    "autoprefixer": "6.3.3",
-    "awesome-typescript-loader": "0.15.10",
+    "autoprefixer": "^6.3.4",
+    "awesome-typescript-loader": "^0.16.2",
     "css-loader": "0.23.1",
     "extract-text-webpack-plugin": "1.0.1",
     "html-loader": "0.4.3",
-    "html-webpack-plugin": "2.10.0",
-    "jasmine-core": "2.4.1",
+    "html-webpack-plugin": "^2.12.0",
+    "jasmine-core": "^2.4.1",
     "karma": "0.13.22",
-    "karma-jasmine": "0.3.7",
+    "karma-jasmine": "^0.3.8",
     "karma-phantomjs-launcher": "1.0.0",
     "karma-sourcemap-loader": "0.3.7",
     "karma-webpack": "1.7.0",
     "node-sass": "3.4.2",
-    "phantomjs-prebuilt": "2.1.5",
+    "phantomjs-prebuilt": "^2.1.6",
     "postcss-loader": "0.8.2",
     "sass-loader": "3.2.0",
     "style-loader": "0.13.0",
-    "typescript": "1.8.7",
+    "typescript": "^1.8.9",
     "webpack": "1.12.14",
-    "yargs": "4.2.0"
+    "yargs": "^4.3.2"
   },
   "engines": {
     "node": ">=0.10.0"
   },
   "dependencies": {
-    "angular": "1.5.0",
+    "angular": "^1.5.2",
     "angular-chart.js": "^0.9.0",
     "angular-ui-router": "0.2.18",
-    "angularjs-slider": "2.10.2",
+    "angularjs-slider": "^2.10.4",
     "highcharts-browserify": "2.0.2",
     "highcharts-ng": "0.0.11",
     "lodash": "4.6.1",
-    "tr-ng-grid": "3.1.6"
+    "tr-ng-grid": "^3.1.7"
   }
 }
