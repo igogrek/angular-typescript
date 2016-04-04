@@ -44,7 +44,7 @@
     "angularjs-slider": "^2.10.4",
     "highcharts-browserify": "2.0.2",
     "highcharts-ng": "0.0.11",
-    "lodash": "4.6.1",
+    "lodash": "^4.7.0",
     "tr-ng-grid": "^3.1.7"
   }
 }
