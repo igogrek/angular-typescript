@@ -14,7 +14,7 @@
   "version": "0.0.1",
   "devDependencies": {
     "autoprefixer": "^6.3.4",
-    "awesome-typescript-loader": "^0.17.0",
+    "awesome-typescript-loader": "^0.19.0",
     "css-loader": "0.23.1",
     "extract-text-webpack-plugin": "1.0.1",
     "html-loader": "0.4.3",
@@ -38,10 +38,10 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
-    "angular": "^1.5.2",
+    "angular": "^1.5.6",
     "angular-chart.js": "^0.10.0",
     "angular-ui-router": "^0.3.0",
-    "angularjs-slider": "^2.10.4",
+    "angularjs-slider": "^4.0.1",
     "highcharts-browserify": "2.0.2",
     "highcharts-ng": "0.0.11",
     "lodash": "^4.7.0",
