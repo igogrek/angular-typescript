@@ -25,13 +25,13 @@
     "karma-phantomjs-launcher": "1.0.0",
     "karma-sourcemap-loader": "0.3.7",
     "karma-webpack": "1.7.0",
-    "node-sass": "^3.5.3",
+    "node-sass": "^3.8.0",
     "phantomjs-prebuilt": "^2.1.6",
     "postcss-loader": "^0.9.1",
-    "sass-loader": "3.2.0",
+    "sass-loader": "^3.2.1",
     "style-loader": "^0.13.1",
     "typescript": "^1.8.9",
-    "webpack": "^1.12.15",
+    "webpack": "^1.13.1",
     "yargs": "^4.3.2"
   },
   "engines": {
