@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "angular": "^1.5.7",
-    "angular-chart.js": "^0.10.0",
+    "angular-chart.js": "^1.0.0",
     "angular-ui-router": "^0.3.0",
     "angularjs-slider": "^5.1.0",
     "highcharts-browserify": "2.0.2",
