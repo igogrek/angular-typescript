@@ -27,7 +27,7 @@
     "karma-webpack": "^1.8.0",
     "node-sass": "^3.8.0",
     "phantomjs-prebuilt": "^2.1.6",
-    "postcss-loader": "^0.9.1",
+    "postcss-loader": "^0.10.0",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
     "typescript": "^1.8.9",
