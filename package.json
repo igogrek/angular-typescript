@@ -30,7 +30,7 @@
     "postcss-loader": "^0.13.0",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
-    "typescript": "^1.8.9",
+    "typescript": "^2.0.3",
     "webpack": "^1.13.1",
     "yargs": "^5.0.0"
   },
