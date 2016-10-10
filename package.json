@@ -43,7 +43,7 @@
     "angular-ui-router": "^0.3.0",
     "angularjs-slider": "^5.1.0",
     "highcharts-browserify": "2.0.2",
-    "highcharts-ng": "0.0.12",
+    "highcharts-ng": "0.0.13",
     "lodash": "^4.7.0",
     "tr-ng-grid": "^3.1.7"
   }
