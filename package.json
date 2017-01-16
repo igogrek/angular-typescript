@@ -24,7 +24,7 @@
     "karma-jasmine": "^1.0.2",
     "karma-phantomjs-launcher": "^1.0.1",
     "karma-sourcemap-loader": "0.3.7",
-    "karma-webpack": "^1.8.0",
+    "karma-webpack": "^2.0.1",
     "node-sass": "^4.1.0",
     "phantomjs-prebuilt": "^2.1.6",
     "postcss-loader": "^1.0.0",
@@ -43,7 +43,7 @@
     "angular-ui-router": "^0.3.0",
     "angularjs-slider": "^6.0.0",
     "highcharts-browserify": "2.0.2",
-    "highcharts-ng": "0.0.13",
+    "highcharts-ng": "^1.0.0",
     "lodash": "^4.7.0",
     "tr-ng-grid": "^3.1.7"
   }
